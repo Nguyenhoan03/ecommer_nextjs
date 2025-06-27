@@ -34,3 +34,21 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+- .env: Chứa các biến môi trường
+- .env.prod: Chứa các biến môi trường ở môi trường sản phẩm
+- app: Chứa định tuyến các trang
+- components: Chứa các thành phần tái sử dụng lại nhiều lần
+- config: Chứa các cấu hình như API url,...
+- constants: Chứa các hằng số không đổi
+- enums: Chứa các giá trị kiểu dữ liệu liệt kê (enumerations)
+- hooks: Chứa các hooks custome
+- locales: Chuyển đổi ngôn ngữ
+- models: Chứa các khuôn mẫu hoặc các thực thể như User, Customer
+- redux: Chứa cấu hình redux (nếu có)
+- resources: Chứa các nội dung tĩnh của ứng dụng
+- services: Chứa các dịch vụ lấy dữ liệu từ API
+- styles: Chứa các style cho các file của dự án
+- uploads: Chứa các config để upload file, ảnh
+- utils: Chứa các hàm dùng chung cho toàn bộ dự án

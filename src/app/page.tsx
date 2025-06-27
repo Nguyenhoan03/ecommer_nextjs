@@ -1,95 +1,190 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
+import React, { useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Autoplay, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import Image from 'next/image';
+import "@/styles/Home.scss";
+import "@/styles/CardFeatured.scss";
+import "@/styles/CardLeatest.scss";
+import CardFeatured from '@/components/CardFeatured';
+import CardLeatest from '@/components/CardLeatest';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
 
-export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
+const sliderImages = [
+  '/uploads/bruce-mars-FWVMhUa_wbY-unsplash_2.png',
+  '/uploads/bruce-mars-FWVMhUa_wbY-unsplash_3.png',
+  '/uploads/promotional.png',
+];
+
+const ImageSlider = () => (
+  <Swiper
+    className="bannerImg-swiper"
+    spaceBetween={10}
+    slidesPerView={1}
+    loop={true}
+    autoplay={{ delay: 3000, disableOnInteraction: false }}
+    navigation={true}
+    modules={[Navigation, Autoplay]}
+  >
+    {sliderImages.map((src, idx) => (
+      <SwiperSlide key={idx}>
         <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+          src={src}
+          alt={`Banner ${idx + 1}`}
+          width={1200}
+          height={400}
+          style={{ width: '100%' }}
         />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+      </SwiperSlide>
+    ))}
+  </Swiper>
+);
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+const featuredProducts = [
+  {
+    img: '/uploads/Featured_product.png',
+    name: 'Cantilever chair',
+    code: 'Y523201',
+    price: '$42.00',
+  },
+  {
+    img: '/uploads/Featured_product.png',
+    name: 'Cantilever chair',
+    code: 'Y523201',
+    price: '$42.00',
+  },
+  {
+    img: '/uploads/Featured_product.png',
+    name: 'Cantilever chair',
+    code: 'Y523201',
+    price: '$42.00',
+  },
+  {
+    img: '/uploads/Featured_product.png',
+    name: 'Cantilever chair',
+    code: 'Y523201',
+    price: '$42.00',
+  },
+  {
+    img: '/uploads/Featured_product.png',
+    name: 'Cantilever chair',
+    code: 'Y523201',
+    price: '$42.00',
+  },
+  {
+    img: '/uploads/Featured_product.png',
+    name: 'Cantilever chair',
+    code: 'Y523201',
+    price: '$42.00',
+  },
+  {
+    img: '/uploads/Featured_product.png',
+    name: 'Cantilever chair',
+    code: 'Y523201',
+    price: '$42.00',
+  },
+  // ...các sản phẩm khác...
+];
+
+const leatestProducts = [
+  {
+    img: '/images/image 23.png',
+    name: 'Comfort Handy Craft',
+    price: '$42.00',
+    oldPrice: '$65.00',
+    badge: 'Sale',
+  },
+  {
+    img: '/images/image 23.png',
+    name: 'Comfort Handy Craft',
+    price: '$42.00',
+    oldPrice: '$65.00',
+    badge: 'Sale',
+  },
+  {
+    img: '/images/image 23.png',
+    name: 'Comfort Handy Craft',
+    price: '$42.00',
+    oldPrice: '$65.00',
+    badge: 'Sale',
+  },
+  {
+    img: '/images/image 23.png',
+    name: 'Comfort Handy Craft',
+    price: '$42.00',
+    oldPrice: '$65.00',
+    badge: 'Sale',
+  },
+  {
+    img: '/images/image 23.png',
+    name: 'Comfort Handy Craft',
+    price: '$42.00',
+    oldPrice: '$65.00',
+    badge: 'Sale',
+  },
+  {
+    img: '/images/image 23.png',
+    name: 'Comfort Handy Craft',
+    price: '$42.00',
+    oldPrice: '$65.00',
+    badge: 'Sale',
+  },
+  // ...thêm sản phẩm khác...
+];
+
+const HomePage = () => {
+  const [tabValue, setTabValue] = useState(0);
+
+  const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+    setTabValue(newValue);
+  };
+
+  return (
+    <main className="container">
+      <div className="banner_slide">
+        <ImageSlider />
+      </div>
+
+      <div className="featured_product mt-5">
+        <h2 className="text-center mb-4 featured-products__title">Featured Products</h2>
+        <Swiper
+          className="card-featured-swiper"
+          spaceBetween={20}
+          slidesPerView={5}
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
+          navigation={true}
+          pagination={{ clickable: true }}
+          modules={[Pagination, Navigation, Autoplay]}
+        >
+          {featuredProducts.map((item, idx) => (
+            <SwiperSlide key={idx}>
+              <CardFeatured item={item} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+
+      <div className="leatest_product mt-5">
+        <h2 className="text-center mb-4 leatest-products__title">Leatest Products</h2>
+        <Tabs value={tabValue} onChange={handleTabChange} className="tabs-center mb-4">
+          <Tab label="New Arrival" />
+          <Tab label="Best Seller" />
+          <Tab label="Featured" />
+          <Tab label="Special Offer" />
+        </Tabs>
+        <div className="row mt-5">
+          {leatestProducts.map((item, idx) => (
+            <div className="col-12 col-sm-6 col-md-6 col-lg-4" key={idx}>
+              <CardLeatest item={item} />
+            </div>
+          ))}
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </div>
+    </main>
   );
-}
+};
+
+export default HomePage;
