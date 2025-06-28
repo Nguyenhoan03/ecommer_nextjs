@@ -1,7 +1,9 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay, Pagination } from 'swiper/modules';
+import { FaArrowUp } from "react-icons/fa6";
+
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -11,10 +13,11 @@ import "@/styles/CardFeatured.scss";
 import "@/styles/CardLeatest.scss";
 import CardFeatured from '@/components/CardFeatured';
 import CardLeatest from '@/components/CardLeatest';
-
-import Tab from '@mui/material/Tab';
+import Button from '@/components/Button';
 import CardTrending from '@/components/CardTrending';
 import TabsCustom from '@/components/TabsCustom';
+import Link from 'next/link';
+import { useRevealOnScroll } from "@/hooks/useRevealOnScroll";
 
 
 const sliderImages = [
@@ -213,10 +216,25 @@ const HomePage = () => {
     setTabValue(newValue);
   };
 
-  const [discountTab,setDiscountTab] = useState(0);
+  const [discountTab, setDiscountTab] = useState(0);
   const handleDiscountTabChange = (event: React.SyntheticEvent, newValue: number) => {
     setDiscountTab(newValue);
   };
+
+  const handleBackToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setShowBackToTop(window.scrollY > 300);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const sectionRefs = Array.from({ length: 11 }, () => useRevealOnScroll());
+
 
   return (
     <main className="container">
@@ -224,7 +242,7 @@ const HomePage = () => {
         <ImageSlider />
       </div>
 
-      <div className="featured_product mt-5">
+      <div ref={sectionRefs[0]} className="featured_product mt-5">
         <h2 className="text-center mb-4 featured-products__title">Featured Products</h2>
         <Swiper
           className="card-featured-swiper"
@@ -243,7 +261,7 @@ const HomePage = () => {
         </Swiper>
       </div>
 
-      <div className="leatest_product mt-4">
+      <div ref={sectionRefs[1]} className="leatest_product mt-4">
         <h2 className="text-center mb-4 leatest-products__title">Leatest Products</h2>
         <TabsCustom
           tabs={["New Arrival", "Best Seller", "Featured", "Special Offer"]}
@@ -260,7 +278,7 @@ const HomePage = () => {
         </div>
       </div>
 
-      <section className="fade-right reveal mt-5">
+      <section ref={sectionRefs[2]} className="fade-right reveal mt-5">
         <div className="shopex-offer">
           <h2 className="shopex-offer__title text-center">What Shopex Offer!</h2>
         </div>
@@ -317,7 +335,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section className="fade-up reveal mt-5 mb-5">
+      <section ref={sectionRefs[3]} className="fade-up reveal mt-5 mb-5">
         <div className="image_adv">
           <div className="image_adv__inner">
             <div className="image_adv__img-wrap">
@@ -334,7 +352,9 @@ const HomePage = () => {
                 </li>
               </ul>
               <div className="image_adv__actions">
-                <button className="image_adv__btn">Add To Cart</button>
+                {/* <button className="image_adv__btn">Add To Cart</button> */}
+                <Button className="image_adv__btn">Add To Cart</Button>
+
                 <div className="image_adv__product">
                   <span className="image_adv__product-name">B&B Italian Sofa</span>
                   <span className="image_adv__product-price">$32.00</span>
@@ -347,12 +367,12 @@ const HomePage = () => {
 
 
 
-      <section className="fade-up reveal mt-5 trending-products">
+      <section ref={sectionRefs[4]} className="fade-up reveal mt-5 trending-products">
         <h2 className="trending-products__title text-center">Trending Products</h2>
         <div className="trending-product__content container">
           <div className="row justify-content-center">
             {trendingProducts.map((item, idx) => (
-              <CardTrending item={item} key={idx}/>
+              <CardTrending item={item} key={idx} />
             ))}
           </div>
         </div>
@@ -361,7 +381,7 @@ const HomePage = () => {
 
 
 
-      <section className="fade-left reveal mt-5 mb-5">
+      <section ref={sectionRefs[5]} className="fade-left reveal mt-5 mb-5">
         <div className="discount-feature container">
           <div className="row discount-feature__content justify-content-center">
 
@@ -420,7 +440,7 @@ const HomePage = () => {
 
 
 
-      <section className="fade-right reveal discount-item mt-5 mb-5">
+      <section ref={sectionRefs[6]} className="fade-right reveal discount-item mt-5 mb-5">
         <h2 className="discount-item__title text-center mb-4">Discount Item</h2>
         <div className="discount-item__tabs d-flex justify-content-center align-items-center gap-4">
           {/* <span className="discount-item__tab discount-item__tab--active" data-tab="wood">
@@ -470,7 +490,7 @@ const HomePage = () => {
                   <span>Material expose like metals</span>
                 </div>
               </div>
-              <button className="discount-item__btn">Shop Now</button>
+              <Button className="discount-item__btn"><Link href="" > Shop Now </Link></Button>
             </div>
             <div className="discount-item__img-wrapper">
               <div className="discount-item__img-bg">
@@ -500,7 +520,8 @@ const HomePage = () => {
                   <span>Various colors</span>
                 </div>
               </div>
-              <button className="discount-item__btn">Shop Now</button>
+              <Button className="discount-item__btn"><Link href="" > Shop Now </Link></Button>
+
             </div>
             <div className="discount-item__img-wrapper">
               <div className="discount-item__img-bg">
@@ -531,7 +552,7 @@ const HomePage = () => {
                   <span>Comfortable seating</span>
                 </div>
               </div>
-              <button className="discount-item__btn">Shop Now</button>
+              <Button className="discount-item__btn"><Link href="" > Shop Now </Link></Button>
             </div>
             <div className="discount-item__img-wrapper">
               <div className="discount-item__img-bg">
@@ -544,7 +565,7 @@ const HomePage = () => {
       </section>
 
 
-      <section className="fade-up reveal top-categories mt-5 mb-5">
+      <section ref={sectionRefs[7]} className="fade-up reveal top-categories mt-5 mb-5">
         <h2 className="top-categories__title text-center mb-4">Top Categories</h2>
         <div className="container top-category__swiper mt-5">
           <Swiper
@@ -573,9 +594,9 @@ const HomePage = () => {
                         width={200}
                         height={200}
                       />
-                      <button className="top-categories__btn">
-                        <a href={cat.link}> View Shop </a>
-                      </button>
+                      <Button className="top-categories__btn">
+                        <a href={cat.link}>View Shop</a>
+                      </Button>
                     </div>
                   </div>
                   <div className="top-categories__content z-3">
@@ -591,16 +612,17 @@ const HomePage = () => {
       </section>
 
 
-      <section className="fade-left reveal img-banner mt-5 mb-5">
+      <section ref={sectionRefs[8]} className="fade-left reveal img-banner mt-5 mb-5">
         <div className="img-banner__content">
           <h2 className="img-banner__title">Get Leatest Update By Subscribe
             0ur Newslater</h2>
-          <button className="img-banner__btn"><a href="" className="text-white text-decoration-none"> Shop now
-          </a></button>
+          <Button className="img-banner__btn">
+            <a href="" className="text-white text-decoration-none">Shop now</a>
+          </Button>
         </div>
       </section>
 
-      <section className="fade-right reveal brand mt-5 mb-5">
+      <section ref={sectionRefs[9]} className="fade-right reveal brand mt-5 mb-5">
         <div className="brand-logos d-flex justify-content-between align-items-center my-5">
           <a href="https://fashionlive.com" target="_blank">
             <img src="./uploads/Screenshot 2025-05-20 153723.png" alt="Fashion Live"
@@ -623,7 +645,7 @@ const HomePage = () => {
       </section>
 
 
-      <section className="fade-up reveal leatest-blog mt-5 mb-5">
+      <section ref={sectionRefs[10]} className="fade-up reveal leatest-blog mt-5 mb-5">
         <h2 className="leatest-blog__title">Leatest Blog</h2>
         <div className="leatest-blog__list">
           <div className="leatest-blog__item">
@@ -694,14 +716,16 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-
-      <button id="backToTopBtn" className="back-to-top d-lg-none" aria-label="Lên đầu trang">
-        <i className="fa-solid fa-arrow-up"></i>
-      </button>
-
-
-
-
+      {showBackToTop && (
+        <Button
+          id="backToTopBtn"
+          className="back-to-top"
+          aria-label="Lên đầu trang"
+          onClick={handleBackToTop}
+        >
+          <FaArrowUp />
+        </Button>
+      )}
     </main>
   );
 };
