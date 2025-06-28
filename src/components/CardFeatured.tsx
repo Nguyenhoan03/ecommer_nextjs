@@ -20,7 +20,7 @@ const CardFeatured = ({ item }: CardFeaturedProps) => {
         <button><FaMagnifyingGlassPlus /></button>
       </div>
       <div className="card__featured__viewdetail">
-        <Link href="/" className="card__featured__nav">View Details</Link>
+        <Link href={`/product/${item.name}`} className="card__featured__nav">View Details</Link>
       </div>
       <Image
         src={item.img}
