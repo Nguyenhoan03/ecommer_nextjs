@@ -11,9 +11,10 @@ import "@/styles/CardFeatured.scss";
 import "@/styles/CardLeatest.scss";
 import CardFeatured from '@/components/CardFeatured';
 import CardLeatest from '@/components/CardLeatest';
-import Tabs from '@mui/material/Tabs';
+
 import Tab from '@mui/material/Tab';
 import CardTrending from '@/components/CardTrending';
+import TabsCustom from '@/components/TabsCustom';
 
 
 const sliderImages = [
@@ -212,6 +213,11 @@ const HomePage = () => {
     setTabValue(newValue);
   };
 
+  const [discountTab,setDiscountTab] = useState(0);
+  const handleDiscountTabChange = (event: React.SyntheticEvent, newValue: number) => {
+    setDiscountTab(newValue);
+  };
+
   return (
     <main className="container">
       <div className="banner_slide">
@@ -239,12 +245,12 @@ const HomePage = () => {
 
       <div className="leatest_product mt-4">
         <h2 className="text-center mb-4 leatest-products__title">Leatest Products</h2>
-        <Tabs value={tabValue} onChange={handleTabChange} className="tabs-center mb-4">
-          <Tab label="New Arrival" />
-          <Tab label="Best Seller" />
-          <Tab label="Featured" />
-          <Tab label="Special Offer" />
-        </Tabs>
+        <TabsCustom
+          tabs={["New Arrival", "Best Seller", "Featured", "Special Offer"]}
+          value={tabValue}
+          onChange={handleTabChange}
+          className="tabs-center mb-4"
+        />
         <div className="row mt-5">
           {leatestProducts.map((item, idx) => (
             <div className="col-12 col-sm-6 col-md-6 col-lg-4" key={idx}>
@@ -346,7 +352,7 @@ const HomePage = () => {
         <div className="trending-product__content container">
           <div className="row justify-content-center">
             {trendingProducts.map((item, idx) => (
-              <CardTrending item={item} />
+              <CardTrending item={item} key={idx}/>
             ))}
           </div>
         </div>
@@ -417,7 +423,7 @@ const HomePage = () => {
       <section className="fade-right reveal discount-item mt-5 mb-5">
         <h2 className="discount-item__title text-center mb-4">Discount Item</h2>
         <div className="discount-item__tabs d-flex justify-content-center align-items-center gap-4">
-          <span className="discount-item__tab discount-item__tab--active" data-tab="wood">
+          {/* <span className="discount-item__tab discount-item__tab--active" data-tab="wood">
             Wood Chair
             <span className="discount-item__dot"></span>
           </span>
@@ -428,7 +434,13 @@ const HomePage = () => {
           <span className="discount-item__tab" data-tab="sofa">
             Sofa Collection
             <span className="discount-item__dot"></span>
-          </span>
+          </span> */}
+          <TabsCustom
+            tabs={["Wood Chair", "Plastic Chair", "Sofa Collection"]}
+            value={discountTab}
+            onChange={handleDiscountTabChange}
+            className="discount-item__tabs d-flex justify-content-center align-items-center gap-4 mb-4"
+          />
         </div>
         <div className="discount-item__content-wrapper">
 
@@ -539,8 +551,9 @@ const HomePage = () => {
             className="swiper mySwiper"
             spaceBetween={30}
             slidesPerView={4}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
             pagination={{ clickable: true, el: '.swiper-pagination__topcategories' }}
-            modules={[Pagination]}
+            modules={[Pagination, Autoplay]}
             breakpoints={{
               0: { slidesPerView: 1 },
               576: { slidesPerView: 2 },
