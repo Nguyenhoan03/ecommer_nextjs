@@ -1,9 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay, Pagination } from 'swiper/modules';
 import { FaArrowUp } from "react-icons/fa6";
-
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -20,6 +18,7 @@ import Link from 'next/link';
 import { useRevealOnScroll } from "@/hooks/useRevealOnScroll";
 import CardShopex from '@/components/card/CardShopex';
 import CardTopCategory from '@/components/card/CardTopCategory';
+import { featuredSwiperConfig, topCategoriesSwiperConfig, bannerSwiperConfig } from "@/config/SwiperConfig";
 
 
 const sliderImages = [
@@ -29,15 +28,7 @@ const sliderImages = [
 ];
 
 const ImageSlider = () => (
-  <Swiper
-    className="bannerImg-swiper"
-    spaceBetween={10}
-    slidesPerView={1}
-    loop={true}
-    autoplay={{ delay: 3000, disableOnInteraction: false }}
-    navigation={true}
-    modules={[Navigation, Autoplay]}
-  >
+  <Swiper {...bannerSwiperConfig}>
     {sliderImages.map((src, idx) => (
       <SwiperSlide key={idx}>
         <Image
@@ -141,7 +132,7 @@ const leatestProducts = [
     oldPrice: '$65.00',
     badge: 'Sale',
   },
-  // ...thêm sản phẩm khác...
+
 ];
 
 const trendingProducts = [
@@ -269,15 +260,7 @@ const HomePage = () => {
 
       <div ref={sectionRefs[0]} className="featured_product mt-5">
         <h2 className="text-center mb-4 featured-products__title">Featured Products</h2>
-        <Swiper
-          className="card-featured-swiper"
-          spaceBetween={20}
-          slidesPerView={5}
-          autoplay={{ delay: 3000, disableOnInteraction: false }}
-          navigation={true}
-          pagination={{ clickable: true }}
-          modules={[Pagination, Navigation, Autoplay]}
-        >
+        <Swiper {...featuredSwiperConfig}>
           {featuredProducts.map((item, idx) => (
             <SwiperSlide key={idx}>
               <CardFeatured item={item} />
@@ -349,7 +332,6 @@ const HomePage = () => {
       </section>
 
 
-
       <section ref={sectionRefs[4]} className="fade-up reveal mt-5 trending-products">
         <h2 className="trending-products__title text-center">Trending Products</h2>
         <div className="trending-product__content container">
@@ -360,8 +342,6 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-
-
 
 
       <section ref={sectionRefs[5]} className="fade-left reveal mt-5 mb-5">
@@ -426,18 +406,6 @@ const HomePage = () => {
       <section ref={sectionRefs[6]} className="fade-right reveal discount-item mt-5 mb-5">
         <h2 className="discount-item__title text-center mb-4">Discount Item</h2>
         <div className="discount-item__tabs d-flex justify-content-center align-items-center gap-4">
-          {/* <span className="discount-item__tab discount-item__tab--active" data-tab="wood">
-            Wood Chair
-            <span className="discount-item__dot"></span>
-          </span>
-          <span className="discount-item__tab pl-3" data-tab="plastic">
-            Plastic Chair
-            <span className="discount-item__dot"></span>
-          </span>
-          <span className="discount-item__tab" data-tab="sofa">
-            Sofa Collection
-            <span className="discount-item__dot"></span>
-          </span> */}
           <TabsCustom
             tabs={["Wood Chair", "Plastic Chair", "Sofa Collection"]}
             value={discountTab}
@@ -551,23 +519,10 @@ const HomePage = () => {
       <section ref={sectionRefs[7]} className="fade-up reveal top-categories mt-5 mb-5">
         <h2 className="top-categories__title text-center mb-4">Top Categories</h2>
         <div className="container top-category__swiper mt-5">
-          <Swiper
-            className="swiper mySwiper"
-            spaceBetween={30}
-            slidesPerView={4}
-            autoplay={{ delay: 3000, disableOnInteraction: false }}
-            pagination={{ clickable: true, el: '.swiper-pagination__topcategories' }}
-            modules={[Pagination, Autoplay]}
-            breakpoints={{
-              0: { slidesPerView: 1 },
-              576: { slidesPerView: 2 },
-              992: { slidesPerView: 3 },
-              1200: { slidesPerView: 4 },
-            }}
-          >
+          <Swiper {...topCategoriesSwiperConfig}>
             {topCategories.map((cat, idx) => (
               <SwiperSlide key={idx}>
-                  <CardTopCategory item={cat} />
+                <CardTopCategory item={cat} />
               </SwiperSlide>
             ))}
             <div className="swiper-pagination swiper-pagination__topcategories"></div>

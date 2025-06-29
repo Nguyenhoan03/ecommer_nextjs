@@ -2,14 +2,10 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaCartShopping, FaHeart, FaMagnifyingGlassPlus } from "react-icons/fa6";
+import { BaseCardItem } from '@/types/BaseCardItem';
 
 interface CardFeaturedProps {
-  item: {
-    img: string;
-    name: string;
-    code: string;
-    price: string;
-  };
+  item: BaseCardItem;
 }
 const CardFeatured = ({ item }: CardFeaturedProps) => {
   return (

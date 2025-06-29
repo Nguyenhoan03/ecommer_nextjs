@@ -1,11 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
+import { BaseCardItem } from '@/types/BaseCardItem';
 interface CardShopexProps {
-    item: {
-        img: string;
-        name: string;
-        desc: string;
-    }
+    item: BaseCardItem;
 }
 const CardShopex = ({item}: CardShopexProps) => {
     return (

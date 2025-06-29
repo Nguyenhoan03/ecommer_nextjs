@@ -1,13 +1,9 @@
 import React from 'react'
 import Image from 'next/image';
 import Link from 'next/link';
+import { BaseCardItem } from '@/types/BaseCardItem';
 interface TrendingProduct { 
-    item: {
-        img: string;
-        name: string;
-        price: string;
-        oldPrice?: string;
-    }
+    item:BaseCardItem;
 }
 
 const CardTrending = ({item} : TrendingProduct) => {

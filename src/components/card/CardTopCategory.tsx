@@ -1,13 +1,10 @@
 import Image from "next/image"
 import Link from "next/link"
 import Button from "../Button"
+import { BaseCardItem } from "@/types/BaseCardItem"
 
 interface CategoryProps {
-    item: {
-        img: string;
-        name: string;
-        price: string;
-    }
+    item: BaseCardItem
 }
 
 const CardTopCategory = ({ item }: CategoryProps) => {

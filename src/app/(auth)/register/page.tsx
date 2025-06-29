@@ -1,12 +1,32 @@
-import React from "react";
+'use client'
+import React, { useState } from "react";
 import Link from "next/link";
-import "@/styles/Login.scss"
-const LoginPage = () => {
+import "@/styles/Login.scss";
+
+const RegisterPage = () => {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    phone: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Gọi API đăng ký
+    alert("Đăng ký thành công!");
+  };
+
   return (
     <>
       <div className="banner-shoplist">
         <div className="banner-shoplist__content container align-items-center">
-          <p className="banner-shoplist__title">My Account</p>
+          <p className="banner-shoplist__title">Register</p>
           <ul className="d-flex gap-2 text-align-start">
             <li>
               <Link href="/" style={{ color: "black", fontFamily: "Lato", fontSize: 16 }}>
@@ -18,7 +38,7 @@ const LoginPage = () => {
             </li>
             <li>
               <Link href="/shoplist" className="breadcrumb-link">
-                . My Account
+                . Register
               </Link>
             </li>
           </ul>
@@ -27,39 +47,72 @@ const LoginPage = () => {
 
       <section className="login-section d-flex align-items-center justify-content-center mt-5">
         <div className="login-box">
-          <h2 className="login-title text-center mb-3">Login</h2>
+          <h2 className="login-title text-center mb-3">Register</h2>
           <p className="login-subtitle text-center mb-4">
-            Please login using account detail below.
+            Please fill in the information below to create an account.
           </p>
-          <form>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+              <input
+                type="text"
+                name="name"
+                className="form-control login-input"
+                placeholder="Full Name"
+                value={form.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
             <div className="mb-3">
               <input
                 type="email"
+                name="email"
                 className="form-control login-input"
                 placeholder="Email Address"
+                value={form.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <input
+                type="tel"
+                name="phone"
+                className="form-control login-input"
+                placeholder="Phone Number"
+                value={form.phone}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="mb-3">
+              <input
+                type="password"
+                name="password"
+                className="form-control login-input"
+                placeholder="Password"
+                value={form.password}
+                onChange={handleChange}
                 required
               />
             </div>
             <div className="mb-3">
               <input
                 type="password"
+                name="confirmPassword"
                 className="form-control login-input"
-                placeholder="Password"
+                placeholder="Confirm Password"
+                value={form.confirmPassword}
+                onChange={handleChange}
                 required
               />
             </div>
-            <div className="mb-3 d-flex justify-content-between align-items-center">
-              <Link href="#" className="login-forgot">
-                Forgot your password?
-              </Link>
-            </div>
             <button type="submit" className="login-btn w-100 mb-3">
-              Sign In
+              Register
             </button>
             <div className="text-center login-bottom-text">
-              Don’t have an Account?
-              <Link href="/register" className="login-create ms-1">
-                Create account
+              Already have an account?
+              <Link href="/(auth)/login" className="login-create ms-1">
+                Login
               </Link>
             </div>
           </form>
@@ -112,4 +165,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default RegisterPage;
