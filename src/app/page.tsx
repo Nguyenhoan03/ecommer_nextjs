@@ -11,13 +11,15 @@ import Image from 'next/image';
 import "@/styles/Home.scss";
 import "@/styles/CardFeatured.scss";
 import "@/styles/CardLeatest.scss";
-import CardFeatured from '@/components/CardFeatured';
-import CardLeatest from '@/components/CardLeatest';
+import CardFeatured from '@/components/card/CardFeatured';
+import CardLeatest from '@/components/card/CardLeatest';
 import Button from '@/components/Button';
-import CardTrending from '@/components/CardTrending';
+import CardTrending from '@/components/card/CardTrending';
 import TabsCustom from '@/components/TabsCustom';
 import Link from 'next/link';
 import { useRevealOnScroll } from "@/hooks/useRevealOnScroll";
+import CardShopex from '@/components/card/CardShopex';
+import CardTopCategory from '@/components/card/CardTopCategory';
 
 
 const sliderImages = [
@@ -209,6 +211,29 @@ const topCategories = [
   // ...thêm các category khác nếu muốn
 ];
 
+const shopexOffers = [
+  {
+    img: '/uploads/free-delivery 1.png',
+    name: 'Free Delivery',
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.',
+  },
+  {
+    img: '/uploads/cashback 1.png',
+    name: 'Money Back',
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.',
+  },
+  {
+    img: '/uploads/secure-payment 1.png',
+    name: 'Secure Payment',
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.',
+  },
+  {
+    img: '/uploads/support 1.png',
+    name: '24/7 Support',
+    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus gravida.',
+  },
+]
+
 const HomePage = () => {
   const [tabValue, setTabValue] = useState(0);
 
@@ -284,53 +309,11 @@ const HomePage = () => {
         </div>
         <div className="container mt-5">
           <div className="row justify-content-center gx-4 gy-4">
-            <div className="col-6 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
-              <div className="shopex-offer__card">
-                <div className="shopex-offer__card-content">
-                  <img src="/uploads/free-delivery 1.png" alt="Free Delivery"
-                    className="shopex-offer__card-img" />
-                  <h3 className="shopex-offer__card-title">Free Delivery</h3>
-                  <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus
-                    gravida.</span>
-                </div>
-              </div>
-            </div>
+            {shopexOffers.map((offer, idx) => (
+              <CardShopex item={offer} key={idx} />
+            ))}
 
 
-            <div className="col-6 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
-              <div className="shopex-offer__card">
-                <div className="shopex-offer__card-content">
-                  <img src="./uploads/cashback 1.png" alt="Money Back" className="shopex-offer__card-img" />
-                  <h3 className="shopex-offer__card-title">Money Back</h3>
-                  <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus
-                    gravida.</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-6 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
-              <div className="shopex-offer__card">
-                <div className="shopex-offer__card-content">
-                  <img src="./uploads/premium-quality 1.png" alt="Premium Quality"
-                    className="shopex-offer__card-img" />
-                  <h3 className="shopex-offer__card-title">Premium Quality</h3>
-                  <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus
-                    gravida.</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-6 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
-              <div className="shopex-offer__card">
-                <div className="shopex-offer__card-content">
-                  <img src="./uploads/24-hours-support 1.png" alt="24/7 Support"
-                    className="shopex-offer__card-img" />
-                  <h3 className="shopex-offer__card-title">24/7 Support</h3>
-                  <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa purus
-                    gravida.</span>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -353,7 +336,7 @@ const HomePage = () => {
               </ul>
               <div className="image_adv__actions">
                 {/* <button className="image_adv__btn">Add To Cart</button> */}
-                <Button className="image_adv__btn">Add To Cart</Button>
+                <Button className="image_adv__btn"><Link href={"/"}> Add To Cart </Link></Button>
 
                 <div className="image_adv__product">
                   <span className="image_adv__product-name">B&B Italian Sofa</span>
@@ -390,7 +373,7 @@ const HomePage = () => {
                 <div className="discount-feature__info text-md-start text-center">
                   <p className="discount-feature__title">23% off in all products</p>
                   <p style={{ marginTop: '-15px', paddingLeft: '20px' }}>
-                    <a href="#" className="discount-feature__link">Shop Now</a>
+                    <Link href="#" className="discount-feature__link">Shop Now</Link>
                   </p>
                 </div>
                 <Image src="/uploads/image 1162.png" alt="" width={312} height={173} className="discount-feature__img ms-md-3 mt-3 mt-md-0" />
@@ -584,26 +567,7 @@ const HomePage = () => {
           >
             {topCategories.map((cat, idx) => (
               <SwiperSlide key={idx}>
-                <div className="top-categories__card">
-                  <div className="top-categories__img-wrapper">
-                    <div className="top-categories__img-wrapper__transition">
-                      <Image
-                        src={cat.img}
-                        alt={cat.name}
-                        className="top-categories__img"
-                        width={200}
-                        height={200}
-                      />
-                      <Button className="top-categories__btn">
-                        <a href={cat.link}>View Shop</a>
-                      </Button>
-                    </div>
-                  </div>
-                  <div className="top-categories__content z-3">
-                    <div className="top-categories__name">{cat.name}</div>
-                    <div className="top-categories__price">{cat.price}</div>
-                  </div>
-                </div>
+                  <CardTopCategory item={cat} />
               </SwiperSlide>
             ))}
             <div className="swiper-pagination swiper-pagination__topcategories"></div>

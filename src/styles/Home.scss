@@ -125,6 +125,10 @@ header {
 header.header-fade:hover {
     opacity: 1;
 } */
+ a,Link {
+    text-decoration: none;
+    color: inherit;
+ }
 
 .reveal {
     opacity: 0;
