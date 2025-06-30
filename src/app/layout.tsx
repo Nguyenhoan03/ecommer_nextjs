@@ -4,7 +4,6 @@ import "@/styles/Header.scss";
 import "@/styles/Footer.scss";
 import "./globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-
 export default function RootLayout({
   children,
 }: {

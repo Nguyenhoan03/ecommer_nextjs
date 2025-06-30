@@ -1,7 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import "@/styles/Login.scss"
+import LoginForm from "@/components/LoginForm";
 const LoginPage = () => {
+
+
   return (
     <>
       <div className="banner-shoplist">
@@ -26,44 +29,7 @@ const LoginPage = () => {
       </div>
 
       <section className="login-section d-flex align-items-center justify-content-center mt-5">
-        <div className="login-box">
-          <h2 className="login-title text-center mb-3">Login</h2>
-          <p className="login-subtitle text-center mb-4">
-            Please login using account detail below.
-          </p>
-          <form>
-            <div className="mb-3">
-              <input
-                type="email"
-                className="form-control login-input"
-                placeholder="Email Address"
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <input
-                type="password"
-                className="form-control login-input"
-                placeholder="Password"
-                required
-              />
-            </div>
-            <div className="mb-3 d-flex justify-content-between align-items-center">
-              <Link href="#" className="login-forgot">
-                Forgot your password?
-              </Link>
-            </div>
-            <button type="submit" className="login-btn w-100 mb-3">
-              Sign In
-            </button>
-            <div className="text-center login-bottom-text">
-              Don’t have an Account?
-              <Link href="/register" className="login-create ms-1">
-                Create account
-              </Link>
-            </div>
-          </form>
-        </div>
+        <LoginForm />
       </section>
 
       <section className="fade-right reveal brand mt-5 mb-5">
