@@ -13,7 +13,7 @@ const CardTopCategory = ({ item }: CategoryProps) => {
             <div className="top-categories__img-wrapper">
                 <div className="top-categories__img-wrapper__transition">
                     <Image
-                        src={item.img}
+                        src={item.img || "/uploads/defaulr_image.jpg"}
                         alt={item.name}
                         className="top-categories__img"
                         width={200}

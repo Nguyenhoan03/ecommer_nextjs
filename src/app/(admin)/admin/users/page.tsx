@@ -3,7 +3,7 @@ import React from "react";
 
 const users = [
   { id: 1, name: "Nguyen Van A", email: "a@example.com", phone: "0901234567" },
-  // ...fetch từ API thực tế
+
 ];
 
 export default function UsersPage() {

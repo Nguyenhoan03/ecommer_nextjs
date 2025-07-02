@@ -19,7 +19,7 @@ const CardFeatured = ({ item }: CardFeaturedProps) => {
         <Link href={`/product/${item.name}`} className="card__featured__nav">View Details</Link>
       </div>
       <Image
-        src={item.img}
+        src={item.thumbnail ? "/uploads/" + item.thumbnail : "/uploads/default_image.jpg"}
         alt={item.name}
         className="product-image img-fluid"
         width={300}
@@ -32,7 +32,7 @@ const CardFeatured = ({ item }: CardFeaturedProps) => {
           <span className="color purple"></span>
           <span className="color blue"></span>
         </div>
-        <p className="product-code">Code - {item.code}</p>
+        <p className="product-code">Code - {item.brand}</p>
         <p className="product-price">{item.price}</p>
       </div>
     </div>

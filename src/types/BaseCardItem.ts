@@ -1,10 +1,12 @@
 export interface BaseCardItem {
-  img: string;
+  thumbnail?: string;
   name: string;
   price?: string | number;
   oldPrice?: string;
-  code?: string;
+  brand?: string;
   badge?: string;
   desc?: string;
   link?: string;
+  img?: string;
+  // code?: string;
 }

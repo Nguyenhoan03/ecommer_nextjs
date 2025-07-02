@@ -1,23 +1,29 @@
-import axios, { AxiosRequestConfig, Method } from 'axios';
-
-interface FetchData {
-    url: string;
-    method?: 'GET' | 'POST' | 'PUT' | 'DELETE';
-    data?: any;
-    headers?: Record<string, string>;
+interface FetchDataProps {
+  url: string;
+  method?: 'GET' | 'POST' | 'PUT' | 'DELETE';
+  data?: any;
+  headers?: Record<string, string>;
 }
 
-export async function FetchData<T>({url,method,data,headers}: FetchData): Promise<T | undefined> {
-    try {
-        const config: AxiosRequestConfig = {
-            url,
-            method,
-            headers,
-            data,
-        };
-        const res = await axios(config);
-        return  res.data as T;
-    } catch (error) {
-        console.log(error);
-    }
+export async function FetchData<T = any>({url,method,data,headers = {}}: FetchDataProps): Promise<T> {
+  const options: RequestInit = {
+    method,
+    headers: {
+      'Content-Type': 'application/json',
+      ...headers,
+    },
+    cache: 'force-cache'
+  };
+
+  if (data && method !== 'GET') {
+    options.body = JSON.stringify(data);
+  }
+
+  const res = await fetch(url, options);
+
+  if (!res.ok) {
+    throw new Error(`HTTP error! status: ${res.status}`);
+  }
+
+  return res.json();
 }

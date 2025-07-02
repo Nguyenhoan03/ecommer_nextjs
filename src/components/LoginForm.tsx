@@ -1,30 +1,29 @@
 'use client';
 import React, { useState } from "react";
 import Link from "next/link";
-import axios from "axios";
-
+import { FetchData } from "@/utils/FetchData";
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  console.log(process.env.BACKEND , "process")
-
- const handleLogin = async (e: React.FormEvent) => {
-  e.preventDefault();
-  try {
-    const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_BACKEND}/login`, {email,password},
-      {
+ 
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const response = await FetchData<{ success?: boolean; message?: string }>({
+        url: `${process.env.NEXT_PUBLIC_BACKEND}/login`,
+        method: "POST",
+        data: { email, password },
         headers: { "Content-Type": "application/json" },
+      })
+      if (response) {
+        alert("Login successful!");
+        window.location.href = "/";
       }
-    );
-    if (response.status === 200) {
-      alert("Login successful!");
-      window.location.href = "/";
+
+    } catch (err: any) {
+      alert("Login failed! " + (err.response?.data?.message || err.message));
     }
-  } catch (err: any) {
-    alert("Login failed! " + (err.response?.data?.message || err.message));
-  }
-};
+  };
 
   return (
     <div className="login-box">

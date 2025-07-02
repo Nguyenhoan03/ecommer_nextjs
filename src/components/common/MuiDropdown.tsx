@@ -6,8 +6,8 @@ import Button from '@mui/material/Button';
 import { FaChevronDown } from "react-icons/fa6";
 
 export interface MuiDropdownProps {
-  label: React.ReactNode;
-  items: { label: string; onClick?: () => void }[];
+  label: React.ReactNode | any;
+  items: { label: React.ReactNode; onClick?: () => void }[];
 }
 
 export default function MuiDropdown({ label, items }: MuiDropdownProps) {
