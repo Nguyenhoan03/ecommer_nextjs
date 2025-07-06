@@ -13,7 +13,7 @@ const CardLeatest = ({ item }: CardLeatestProps) => {
       <Link href={`/product/${item.name}`} className="latest-products__link">
         <div className="latest-products__img-wrapper position-relative">
           <Image
-            src={item.img}
+            src={item.img ? "/uploads/" + item.img : "/uploads/default_image.jpg"}
             alt={item.name}
             width={300}
             height={270}

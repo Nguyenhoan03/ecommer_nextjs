@@ -1,8 +1,8 @@
-
 import React from 'react';
 import Link from 'next/link';
-import { FaMagnifyingGlass, FaChevronDown, FaEnvelope, FaPhone, FaUser, FaHeart, FaCartShopping, FaBars } from "react-icons/fa6";
+import { FaMagnifyingGlass, FaChevronDown, FaEnvelope, FaPhone, FaBars } from "react-icons/fa6";
 import MuiDropdown from '@/components/common/MuiDropdown';
+import HeaderTranslate from '@/components/HeaderTranslate';
 import "../styles/Header.scss";
 
 const Header = () => {
@@ -16,29 +16,7 @@ const Header = () => {
               <span><FaPhone /> (12345)67890</span>
             </div>
             <div className="col-md-6 d-flex justify-content-md-end align-items-center top-bar-right gap-3">
-              <MuiDropdown
-                label="English"
-                items={[
-                  { label: "Vietnamese" },
-                  { label: "Japan" },
-                  { label: "Korea" },
-                ]}
-              />
-              <MuiDropdown
-                label="USD"
-                items={[
-                  { label: "VNĐ" },
-                  { label: "Won" },
-                  { label: "Man" },
-                ]}
-              />
-              <span>
-                <Link href="/login" style={{ color: "white", textDecoration: 'none' }}>
-                  <FaUser /> Login
-                </Link>
-              </span>
-              <span><FaHeart /> Wishlist</span>
-              <span><FaCartShopping /></span>
+              <HeaderTranslate />
             </div>
           </div>
         </div>
@@ -48,16 +26,9 @@ const Header = () => {
         style={{ background: "#a259d9", color: "#fff", fontSize: "15px" }}>
         <span><FaEnvelope /> nmh@gmail.com </span>
         <span className="span_phonenumber"><FaPhone /> (12345)67890</span>
-        <MuiDropdown
-          label="English"
-          items={[
-            { label: "Vietnamese" },
-            { label: "Japan" },
-            { label: "Korea" },
-          ]}
-        />
-        <span><FaHeart /> Wishlist</span>
-        <span><FaCartShopping /></span>
+        <div className="col-md-6 d-flex justify-content-md-end align-items-center top-bar-right gap-3">
+          <HeaderTranslate />
+        </div>
       </div>
 
       <div className="nav-bar">
@@ -70,7 +41,6 @@ const Header = () => {
               </button>
               <div className="logo text-center flex-grow-1" style={{ fontSize: "2rem", fontWeight: "bold" }}>Hekto</div>
               <div className="d-flex align-items-center gap-3 me-2">
-                <Link href="#" className="text-dark"><FaUser className="fs-4" /></Link>
                 <Link href="#" className="text-dark"><FaMagnifyingGlass className="fs-4" /></Link>
               </div>
             </div>

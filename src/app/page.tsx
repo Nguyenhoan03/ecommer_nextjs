@@ -244,6 +244,7 @@ const HomePage = async () => {
         <h2 className="leatest-blog__title">Leatest Blog</h2>
         <div className="leatest-blog__list">
           <div className="leatest-blog__item">
+            <Link href="/blog/1" className="leatest-blog__link">
             <Image src="/uploads/Frame 4 (1).png" alt="Blog 1" className="leatest-blog__img" width={350} height={200} />
             <div className="leatest-blog__info">
               <div className="leatest-blog__meta">
@@ -264,8 +265,11 @@ const HomePage = async () => {
               </div>
               <a href="#" className="leatest-blog__readmore">Read More</a>
             </div>
+            </Link>
           </div>
+          
           <div className="leatest-blog__item">
+             <Link href="/blog/1" className="leatest-blog__link">
             <Image src="/uploads/Frame 3 (1).png" alt="Blog 2" className="leatest-blog__img" width={350} height={200} />
             <div className="leatest-blog__info">
               <div className="leatest-blog__meta">
@@ -286,9 +290,11 @@ const HomePage = async () => {
               </div>
               <a href="#" className="leatest-blog__readmore">Read More</a>
             </div>
+            </Link>
           </div>
           <div className="leatest-blog__item">
-            <Image src="/uploads/Frame 3.png" alt="Blog 3" className="leatest-blog__img" width={350} height={200} />
+             <Link href="/blog/1" className="leatest-blog__link">
+             <Image src="/uploads/Frame 3.png" alt="Blog 3" className="leatest-blog__img" width={350} height={200} />
             <div className="leatest-blog__info">
               <div className="leatest-blog__meta">
                 <span className="leatest-blog__author">
@@ -308,7 +314,9 @@ const HomePage = async () => {
               </div>
               <a href="#" className="leatest-blog__readmore">Read More</a>
             </div>
+            </Link>
           </div>
+          
         </div>
       </section>
       {/* {showBackToTop && (
