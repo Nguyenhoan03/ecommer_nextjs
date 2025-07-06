@@ -124,41 +124,41 @@ const RegisterPage = () => {
           className="brand-logos d-flex justify-content-between align-items-center my-5"
           style={{ width: "85%", margin: "auto" }}
         >
-          <a href="https://fashionlive.com" target="_blank" rel="noopener noreferrer">
+          <Link href="https://fashionlive.com" target="_blank" rel="noopener noreferrer">
             <img
               src="/uploads/Screenshot 2025-05-20 153723.png"
               alt="Fashion Live"
               className="brand-logo img-fluid"
             />
-          </a>
-          <a href="https://handcrafted.com" target="_blank" rel="noopener noreferrer">
+          </Link>
+          <Link href="https://handcrafted.com" target="_blank" rel="noopener noreferrer">
             <img
               src="/uploads/Screenshot 2025-05-20 153816.png"
               alt="Hand Crafted"
               className="brand-logo img-fluid"
             />
-          </a>
-          <a href="https://mestonix.com" target="_blank" rel="noopener noreferrer">
+          </Link>
+          <Link href="https://mestonix.com" target="_blank" rel="noopener noreferrer">
             <img
               src="/uploads/Screenshot 2025-05-20 153833.png"
               alt="Mestonix"
               className="brand-logo img-fluid"
             />
-          </a>
-          <a href="https://sunshine.com" target="_blank" rel="noopener noreferrer">
+          </Link>
+          <Link href="https://sunshine.com" target="_blank" rel="noopener noreferrer">
             <img
               src="/uploads/Screenshot 2025-05-20 153852.png"
               alt="Sunshine"
               className="brand-logo img-fluid"
             />
-          </a>
-          <a href="https://pure.com" target="_blank" rel="noopener noreferrer">
+          </Link>
+          <Link href="https://pure.com" target="_blank" rel="noopener noreferrer">
             <img
               src="/uploads/Screenshot 2025-05-20 153911.png"
               alt="Pure"
               className="brand-logo img-fluid"
             />
-          </a>
+          </Link>
         </div>
       </section>
     </>

@@ -1,5 +1,6 @@
 import React from 'react'
 import "../styles/Footer.scss"
+import Link from 'next/link'
 
 const Footer = () => {
   return (
@@ -24,16 +25,16 @@ const Footer = () => {
                 <div className="col-12 col-md-2">
                     <h4 className="h6 fw-semibold mb-3 text-dark">Categories</h4>
                     <ul className="list-unstyled">
-                        <li className="mb-2"><a href="#" className="text-decoration-none text-secondary">Laptops & Computers</a>
+                        <li className="mb-2"><Link href="#" className="text-decoration-none text-secondary">Laptops & Computers</Link>
                         </li>
-                        <li className="mb-2"><a href="#" className="text-decoration-none text-secondary">Cameras &
-                                Photography</a></li>
-                        <li className="mb-2"><a href="#" className="text-decoration-none text-secondary">Smart Phones &
-                                Tablets</a></li>
-                        <li className="mb-2"><a href="#" className="text-decoration-none text-secondary">Video Games &
-                                Consoles</a></li>
-                        <li className="mb-2"><a href="#" className="text-decoration-none text-secondary">Waterproof
-                                Headphones</a></li>
+                        <li className="mb-2"><Link href="#" className="text-decoration-none text-secondary">Cameras &
+                                Photography</Link></li>
+                        <li className="mb-2"><Link href="#" className="text-decoration-none text-secondary">Smart Phones &
+                                Tablets</Link></li>
+                        <li className="mb-2"><Link href="#" className="text-decoration-none text-secondary">Video Games &
+                                Consoles</Link></li>
+                        <li className="mb-2"><Link href="#" className="text-decoration-none text-secondary">Waterproof
+                                Headphones</Link></li>
                     </ul>
                 </div>
 
@@ -41,11 +42,11 @@ const Footer = () => {
                 <div className="col-12 col-md-3">
                     <h4 className="h6 fw-semibold mb-3 text-dark">Customer Care</h4>
                     <ul className="list-unstyled">
-                        <li className="mb-2"><a href="#" className="text-decoration-none text-secondary">My Account</a></li>
-                        <li className="mb-2"><a href="#" className="text-decoration-none text-secondary">Discount</a></li>
-                        <li className="mb-2"><a href="#" className="text-decoration-none text-secondary">Returns</a></li>
-                        <li className="mb-2"><a href="#" className="text-decoration-none text-secondary">Orders History</a></li>
-                        <li className="mb-2"><a href="#" className="text-decoration-none text-secondary">Order Tracking</a></li>
+                        <li className="mb-2"><Link href="#" className="text-decoration-none text-secondary">My Account</Link></li>
+                        <li className="mb-2"><Link href="#" className="text-decoration-none text-secondary">Discount</Link></li>
+                        <li className="mb-2"><Link href="#" className="text-decoration-none text-secondary">Returns</Link></li>
+                        <li className="mb-2"><Link href="#" className="text-decoration-none text-secondary">Orders History</Link></li>
+                        <li className="mb-2"><Link href="#" className="text-decoration-none text-secondary">Order Tracking</Link></li>
                     </ul>
                 </div>
 
@@ -53,15 +54,15 @@ const Footer = () => {
                 <div className="col-12 col-md-3">
                     <h4 className="h6 fw-semibold mb-3 text-dark">Pages</h4>
                     <ul className="list-unstyled">
-                        <li className="mb-2"><a href="#" className="text-decoration-none text-secondary">Blog</a></li>
-                        <li className="mb-2"><a href="#" className="text-decoration-none text-secondary">Browse the Shop</a>
+                        <li className="mb-2"><Link href="#" className="text-decoration-none text-secondary">Blog</Link></li>
+                        <li className="mb-2"><Link href="#" className="text-decoration-none text-secondary">Browse the Shop</Link>
                         </li>
-                        <li className="mb-2"><a href="#" className="text-decoration-none text-secondary">Category</a></li>
-                        <li className="mb-2"><a href="#" className="text-decoration-none text-secondary">Pre-Built Pages</a>
+                        <li className="mb-2"><Link href="#" className="text-decoration-none text-secondary">Category</Link></li>
+                        <li className="mb-2"><Link href="#" className="text-decoration-none text-secondary">Pre-Built Pages</Link>
                         </li>
-                        <li className="mb-2"><a href="#" className="text-decoration-none text-secondary">Visual Composer
-                                Elements</a></li>
-                        <li className="mb-2"><a href="#" className="text-decoration-none text-secondary">WooCommerce Pages</a>
+                        <li className="mb-2"><Link href="#" className="text-decoration-none text-secondary">Visual Composer
+                                Elements</Link></li>
+                        <li className="mb-2"><Link href="#" className="text-decoration-none text-secondary">WooCommerce Pages</Link>
                         </li>
                     </ul>
                 </div>
@@ -75,9 +76,9 @@ const Footer = () => {
                     <p className="footer-text">&copy; Webecy - All Rights Reserved</p>
                 </div>
                 <div className="footer-right">
-                    <a href="#"><i className="fab fa-facebook-f"></i></a>
-                    <a href="#"><i className="fab fa-instagram"></i></a>
-                    <a href="#"><i className="fab fa-twitter"></i></a>
+                    <Link href="#"><i className="fab fa-facebook-f"></i></Link>
+                    <Link href="#"><i className="fab fa-instagram"></i></Link>
+                    <Link href="#"><i className="fab fa-twitter"></i></Link>
                 </div>
             </div>
         </div>
